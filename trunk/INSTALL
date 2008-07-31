@@ -1,0 +1,13 @@
+
+---------------------------------------------------------------------
+BUILD and INSTALL Instructions
+---------------------------------------------------------------------
+
+Each protoype sub-directory will contain a makefile or instructions 
+to build the executable.
+
+If makefile is present, just type make to build an executable.
+
+In general prototypes are dependent on OpenGL, OpenSceneGraph.
+Please make sure that you have required depedancy installed on 
+you computer.
