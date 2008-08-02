@@ -57,11 +57,12 @@ class PickHandler : public osgGA::GUIEventHandler
 		}
 };
 
+/* Program entry point. */
 int main( int argc, char** argv )
 {
 	osgViewer::Viewer viewer;
 
-	viewer.setUpViewInWindow(0, 0, 512, 512);
+	//viewer.setUpViewInWindow(0, 0, 512, 512);
 
 	Car * car = new Car(osg::Vec3d(R1+(R2-R1)/2.0, 0.0, 0.0));
 	viewer.setSceneData(create_scene_graph(car).get());
