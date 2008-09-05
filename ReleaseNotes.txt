@@ -1,0 +1,16 @@
+
+---------------------------------------------------------------------
+		# PuneCarSim: Release Notes
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+Date: Friday, 5 September 2008, Released version 0.2
+
+Added new prototype 'proto/collision'. This prototype demonstrates simple
+collision detection and logic to take action after collision.
+
+---------------------------------------------------------------------
+Date: 31 July 2008, Released version 0.1
+	Initial import.
+	
+---------------------------------------------------------------------
