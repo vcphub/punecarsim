@@ -1,0 +1,22 @@
+
+---------------------------------------------------------------------
+		# PuneCarSim: Release Notes
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+Date: Friday, 5 September 2008, Released version 0.2
+
+Added new prototype 'proto/collision'. This prototype demonstrates simple
+collision detection and logic to take action after collision.
+
+$ ~/projects/punecarsim/proto/collision$ make
+g++ -c -Wall -g main.cpp
+g++ -o collision -L/usr/local/lib -losg -losgDB -losgViewer main.o 
+
+$ ~/projects/punecarsim/proto/collision$ ./collision
+
+---------------------------------------------------------------------
+Date: 31 July 2008, Released version 0.1
+	Initial import.
+	
+---------------------------------------------------------------------
