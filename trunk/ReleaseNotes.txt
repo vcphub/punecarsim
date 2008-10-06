@@ -4,6 +4,17 @@
 ---------------------------------------------------------------------
 
 ---------------------------------------------------------------------
+Date: Monday, 6 October 2008, Released version 0.3
+
+All changes were make to 'proto/collision'.
+
+New improved collision logic for proto/collision. Specifically 
+new logic for determining directions after collision.
+
+Idea of vector relection, given a normal vector is used.
+Refer to p192 in Hill's book. Section 4.3.6 Reflections.
+
+---------------------------------------------------------------------
 Date: Friday, 5 September 2008, Released version 0.2
 
 Added new prototype 'proto/collision'. This prototype demonstrates simple
