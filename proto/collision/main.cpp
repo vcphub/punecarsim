@@ -8,52 +8,22 @@
 
 #include<osgViewer/Viewer>
 #include<osg/ShapeDrawable>
-#include<osg/MatrixTransform>
 
 #include <osg/Node>
 #include <osg/NodeCallback>
 #include <osg/Timer>
-#include <cstdlib>
 #include <string>
 #include <vector>
 #include <iostream>
+#include "car.h"
 
-#define W 800.0
-#define H 800.0
-#define MAX_SPEED 5
 #define CARCOUNT 10
 #define RAD 40.0
 
+double W = 800.0;
+double H = 800.0;
+
 using namespace std;
-
-/* Car is drawn as sphere for time being. */
-class Car {
-	public:
-	double dx, dz;
-	double x, z;
-	osg::MatrixTransform * mt;
-
-	Car() {
-		x = -W/2 + rand() % (int)W;
-		z = -H/2 + rand() % (int)H;
-		dx = (rand() % (MAX_SPEED * 2)) - MAX_SPEED;
-		dz = (rand() % (MAX_SPEED * 2)) - MAX_SPEED;
-		mt = NULL;
-	}
-
-	void move() {
-		x = x + dx;
-		z = z + dz;
-		osg::Matrix m;
-		m.makeTranslate(x, 0, z);
-		this->mt->setMatrix(m);
-
-		if (x < -W/2.0 || x > W/2.0)
-			dx = -dx;
-		if (z < -H/2.0 || z > H/2.0)
-			dz = -dz;
-	}
-};
 
 /* Declarations. */
 osg::ref_ptr<osg::MatrixTransform> draw_sphere(Car * pcar);
