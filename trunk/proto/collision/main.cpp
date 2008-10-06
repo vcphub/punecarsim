@@ -1,9 +1,5 @@
 /* Description: Learning collision detection.
  *
- * Compile and Execute: 
- * $ g++  -L/usr/local/lib -losg -losgDB -losgViewer shape.cpp -o collision
- * $ ./collision
- *
  * */
 
 #include<osgViewer/Viewer>
@@ -15,6 +11,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <cassert>
 #include "car.h"
 
 #define CARCOUNT 10
@@ -27,6 +24,17 @@ using namespace std;
 
 /* Declarations. */
 osg::ref_ptr<osg::MatrixTransform> draw_sphere(Car * pcar);
+
+/*-----------------------------------------------------------------
+ * Magnitude of a vector.
+-----------------------------------------------------------------*/
+double vec_mag(double x, double z)
+{
+	double mag = sqrt(x * x + z * z);
+	assert(mag > 0.00001);
+	return mag;
+}
+
 
 /*-----------------------------------------------------------------
 Entry point. Create and populate scene graph.
@@ -78,12 +86,36 @@ int main()
 					osg::Vec3d c2(carlist[j]->x, 0.0, carlist[j]->z);
 					osg::BoundingSphere bs2(c2, RAD);
 
+					/* In case of collision, calculate new directions, 
+					 * based on reflection.
+					 * */
 					if(bs1.intersects(bs2)) {
-						/* Collision detection. Simply reverse direction. */
-						carlist[i]->dx =  -carlist[i]->dx;
-						carlist[i]->dz =  -carlist[i]->dz;
-						carlist[j]->dx =  -carlist[j]->dx;
-						carlist[j]->dz =  -carlist[j]->dz;
+
+						/* Create a normal vector. Difference of two locations. */
+						double normalx = carlist[i]->x - carlist[j]->x;
+						double normalz = carlist[i]->z - carlist[j]->z;
+
+						double mag = vec_mag(normalx, normalz);
+						// Make it unit vector.
+						normalx = normalx/mag;
+						normalz = normalz/mag;
+
+						// factor = 2 * (a . normal_vector)
+						double factor = 0.0;
+					   	factor = 2.0 * (carlist[i]->dx * normalx + carlist[i]->dz * normalz);
+
+						// r = a - factor * normal_vector 
+						carlist[i]->dx -= factor * normalx;
+						carlist[i]->dz -= factor * normalz;
+
+						// Change the direction for other object
+						normalx = -normalx;
+						normalz = -normalz;
+
+					   	factor = 2.0 * (carlist[j]->dx * normalx + carlist[j]->dz * normalz);
+						carlist[j]->dx -= factor * normalx;
+						carlist[j]->dz -= factor * normalz;
+
 						break;
 					}
 				}
