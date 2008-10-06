@@ -1,0 +1,32 @@
+
+---------------------------------------------------------------------
+# README
+---------------------------------------------------------------------
+
+Introduction
+------------
+
+You have downloaded source code of project PuneCarSim.
+Aim of the project is to develop a car simulator which will aid
+user in learning to drive a car/vehicle.
+
+Directory Structure
+-------------------
+
++ ./proto
+
+This directory is supposed to contain source code of different 
+prototypes developed. These prototypes will be useful in 
+writing/designing core system. 
+
+The directory will contain separate sub-directories for each 
+prototypes. The prototype sub-directory will contain all the code
+and makefile related to the prototype.
+
+Useful Links
+------------
+For more information see project webpage:
+http://groups.google.com/group/punecarsim/about
+
+To download the source code:
+http://code.google.com/p/punecarsim/downloads/list
