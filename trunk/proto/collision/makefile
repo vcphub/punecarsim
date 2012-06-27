@@ -1,10 +1,11 @@
 SRC_ROOT = .
 CFLAGS  = -Wall -g
-LDFLAGS = -L/usr/local/lib -losg -losgDB -losgViewer
+#LDFLAGS = -L/usr/local/lib -losg -losgDB -losgViewer
+LDFLAGS=-lOpenThreads -losg -losgDB -losgUtil -losgGA -losgText -losgViewer 
 OBJS = main.o car.o
 
 collision: $(OBJS)
-	g++ -o collision $(LDFLAGS) $(OBJS)
+	g++ -o collision $(OBJS) $(LDFLAGS) 
 
 main.o: main.cpp car.h 
 	g++ -c $(CFLAGS) main.cpp
