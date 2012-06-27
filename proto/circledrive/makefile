@@ -1,10 +1,10 @@
 SRC_ROOT=.
 CFLAGS = -Wall -g
-LDFLAGS=-L/usr/local/lib -losg -losgDB -losgViewer
+LDFLAGS=-lOpenThreads -losg -losgDB -losgUtil -losgGA -losgText -losgViewer 
 OBJS= main.o scenegraph.o car.o
 
 circledrive: $(OBJS)
-	g++ -o circledrive $(LDFLAGS) $(OBJS)
+	g++ -o circledrive $(OBJS) $(LDFLAGS) 
 
 main.o: main.cpp scenegraph.h
 	g++ -c $(CFLAGS) main.cpp
